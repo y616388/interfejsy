@@ -1,0 +1,41 @@
+body {
+  background: #363636;
+  color: white;
+  user-select: none;
+}
+
+#kontener {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+#lewy, #prawy {
+  position: absolute;
+  background: #505050;
+  top:0;
+  bottom: 0;
+  margin: auto;
+  font-size: 2vw;
+  text-align: center;
+  line-height: 30vw;
+  width: 30vw;
+  height: 30vw;
+}
+
+#lewy {
+  left: 0vw;
+  right: 40vw;
+}
+
+#prawy {
+  left: 40vw;
+  right: 0vw;
+}
+
+#lewy:hover, #prawy:hover {
+  cursor: pointer;
+  background: #6a6a6a;
+}
