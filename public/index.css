@@ -1,7 +1,7 @@
 body {
-  background: #363636;
+  background: #FBF1E7;
   color: white;
-  user-select: none;
+  font-family: 'Quicksand', sans-serif;
 }
 
 #kontener {
@@ -12,30 +12,81 @@ body {
   height: 100vh;
 }
 
-#lewy, #prawy {
-  position: absolute;
-  background: #505050;
-  top:0;
-  bottom: 0;
-  margin: auto;
-  font-size: 2vw;
-  text-align: center;
-  line-height: 30vw;
-  width: 30vw;
-  height: 30vw;
+#baner {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	background: #F9E8D8;
+	width: 100vw;
+	height: 13vh;
 }
 
-#lewy {
-  left: 0vw;
-  right: 40vw;
+#baner2 {
+	position: fixed;
+	top: 1vw;
+	right: 1vw;
+	margin: auto;
+	background: green;
+	width: 5vw;
+	height: 5vw;
 }
 
-#prawy {
-  left: 40vw;
-  right: 0vw;
+#baner3 {
+	position: fixed;
+	top: 1vw;
+	right: 7vw;
+	margin: auto;
+	background: red;
+	width: 5vw;
+	height: 5vw;
 }
 
-#lewy:hover, #prawy:hover {
-  cursor: pointer;
-  background: #6a6a6a;
+#menu {
+	width: 20vw;
+	height: 87vh;
+	background: #C68A66;
+	position: fixed;
+	top: 13vh;
+	left: 0;
+}
+
+#koszyk_open {
+	width: 15vw;
+	height: 10vh;
+	background: #C68A66;
+	position: fixed;
+	bottom: 1vh;
+	right: 1vw;
+}
+
+.przycisk {
+	cursor: pointer;
+	width: 18vw;
+	height: 14.5vh;
+	background: none;
+	line-height: 14vh;
+	text-align: left;
+	padding-left: 2vw;
+	font-size: 2vw;
+	color: white;
+	border-bottom: 1px #F9E8D8 solid;
+}
+
+.przycisk:hover {
+	background: #cd9879;
+}
+
+.przycisk:active {
+	background: #a3633d;
+}
+
+#promocje {
+	position: fixed;
+	top: 16vh;
+	right: 1vw;
+	height: 60vh;
+	width: 15vw;
+	border: 1px solid black;
 }
