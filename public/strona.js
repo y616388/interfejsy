@@ -1,5 +1,6 @@
 start();
 function start() {
+	document.getElementById('kontener').innerHTML+="<div id='dania'></div>";
 	document.getElementById('kontener').innerHTML+="<div id='baner'>baner</div>";
 	document.getElementById('kontener').innerHTML+="<div id='baner2'></div>";
 	document.getElementById('kontener').innerHTML+="<div id='baner3'></div>";
@@ -7,6 +8,7 @@ function start() {
 	document.getElementById('kontener').innerHTML+="<div id='main'></div>";
 	document.getElementById('kontener').innerHTML+="<div id='koszyk_open'>Przejdź do koszyka</div>";
 	document.getElementById('kontener').innerHTML+="<div id='promocje'></div>";
+	
 }
 
 var id = 1;
@@ -16,6 +18,15 @@ function opcja(id) {
 		document.getElementById('o'+i).style.background = "#C68A66";
 	}
 	document.getElementById('o'+id).style.background = "#a3633d";
+	
+	if(id == 1) {
+		//console.log("a");
+		for(var i = 1; i<=12; i++) {
+			document.getElementById('dania').innerHTML+="<div class='danie'>"+
+			"<div class='danie_nazwa_tlo'></div><div class='danie_nazwa'>"+pizze[i-1]+"</div>"+
+			"<img src='http://tattoopizza.pl/wp-content/uploads/2016/10/wm1p-300x300.png'></div>";
+		}
+	}
 }
 
 opcja(1);
