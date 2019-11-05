@@ -1,3 +1,5 @@
+## [Strona](http://interfejsy.herokuapp.com)
+
 ## Deploy instructions
 
 ```
@@ -8,4 +10,7 @@ git push -u origin master
 ```
 ## TODO List
 
-* wszystko kurwa xD
+* Grafiki
+* Edycja koszyka
+* Kreator
+* Płatność
