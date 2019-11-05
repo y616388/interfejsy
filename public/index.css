@@ -60,10 +60,13 @@ body {
 #koszyk_open {
 	width: 15vw;
 	height: 10vh;
-	background: #C68A66;
+	background: #a1d379;
 	position: fixed;
 	bottom: 1vw;
 	right: 1vw;
+  text-align: center;
+  line-height: 10vh;
+  font-size: 1.5vw;
 }
 
 .przycisk {
@@ -115,6 +118,7 @@ body {
 .danie > img {
 	height: 100%;
 	width: 100%;
+  pointer-events: none;
 }
 
 .danie_nazwa_tlo, .danie_nazwa  {
@@ -131,4 +135,144 @@ body {
 .danie_nazwa_tlo {
 	background: #363636;
 	opacity: 0.7;
+}
+
+.danie_opis {
+  position: absolute;
+	width: 15vw;
+	height: 5vw;
+	bottom: 7.5vw;
+	left: 2.5vw;
+	text-align: center;
+	font-size: 1.3vw;
+  display: none;
+}
+
+.danie_dodaj {
+  position: absolute;
+	width: 18vw;
+	height: 5vw;
+	bottom: 1vw;
+	left: 1vw;
+	text-align: center;
+	line-height: 5vw;
+	font-size: 2vw;
+  background: #a1d379;
+  display: none;
+  cursor: pointer;
+}
+
+@keyframes nazwa_gora {
+    0% {bottom: 0vw;}
+    100% {bottom: 15vw;}
+}
+
+@keyframes nazwa_tlo_gora {
+    0% {height: 5vw;}
+    100% {height: 20vw;}
+}
+
+@keyframes nazwa_dol {
+    0% {bottom: 15vw;}
+    100% {bottom: 0vw;}
+}
+
+@keyframes nazwa_tlo_dol {
+    0% {height: 20vw;}
+    100% {height: 5vw;}
+}
+
+@keyframes znikanie {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+@keyframes odznikanie {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes znikanie2 {
+    0% {opacity: 0.7;}
+    100% {opacity: 0;}
+}
+
+@keyframes odznikanie2 {
+    0% {opacity: 0;}
+    100% {opacity: 0.7;}
+}
+
+#dodanie_dania_tlo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #363636;
+  opacity: 0.7;
+  display: none;
+}
+
+#dodanie_dania {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 31vw;
+  height: 80vh;
+  background: #FBF1E7;
+  display: none;
+  color: #363636;
+}
+
+#dodanie_nazwa {
+  position: relative;
+  top: 1vw;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  height: 5vw;
+  font-size: 3vw;
+  text-align: center;
+  line-height: 5vw;
+}
+
+.dodanie_kolo, .dodanie_puste, .dodanie_kwadrat {
+  height: 5vw;
+  width: 5vw;
+  text-align: center;
+  line-height: 5vw;
+  font-size: 1.9vw;
+  float: left;
+  margin-left: 1vw;
+  margin-top: 2vw;
+}
+
+.dodanie_kwadrat {
+  border: 1px solid #363636;
+  cursor: pointer;
+}
+
+.dodanie_kolo {
+  border-radius: 50%;
+  border: 1px solid #363636;
+}
+
+.dodanie_przycisk {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1vw;
+  width: 29vw;
+  height: 5vw;
+  background: #a1d379;
+  cursor: pointer;
+  line-height: 5vw;
+  text-align: center;
+  font-size: 3vw;
+  margin: auto;
+  color: white;
 }
