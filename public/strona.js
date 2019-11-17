@@ -1,13 +1,13 @@
 start();
 function start() {
 	document.getElementById('kontener').innerHTML += "<div id='dania'></div>";
-	document.getElementById('kontener').innerHTML += "<div id='baner'>baner</div>";
-	document.getElementById('kontener').innerHTML += "<div id='baner2'></div>";
-	document.getElementById('kontener').innerHTML += "<div id='baner3'></div>";
+	document.getElementById('kontener').innerHTML += "<div id='baner'><img id='b1' src='img/logo.png'><img id='b2' src='img/baner.png'></div>";
+	document.getElementById('kontener').innerHTML += "<div id='baner2'><img src='img/pl.png'></div>";
+	document.getElementById('kontener').innerHTML += "<div id='baner3'><img src='img/ang.png'></div>";
 	document.getElementById('kontener').innerHTML += "<div id='menu'><div class='przycisk' id='o0' onclick='opcja(0)'>Pizza</div><div class='przycisk' id='o1' onclick='opcja(1)'>Dania Mięsne</div><div class='przycisk' id='o2' onclick='opcja(2)'>Makarony</div><div class='przycisk' id='o3' onclick='opcja(3)'>Dodatki</div><div class='przycisk' id='o4' onclick='opcja(4)'>Alkohole</div><div class='przycisk' id='o5' onclick='opcja(5)'>Napoje</div></div>";
 	document.getElementById('kontener').innerHTML += "<div id='main'></div>";
 	document.getElementById('kontener').innerHTML += "<div id='koszyk_open'>Przejdź do koszyka➜</div>";
-	document.getElementById('kontener').innerHTML += "<div id='promocje'></div>";
+	document.getElementById('kontener').innerHTML += "<div id='promocje'><img src='img/promo.png'></div>";
   document.getElementById('kontener').innerHTML += "<div id='dodanie_dania_tlo' onclick='zamkniecie_dodania()'></div>"
   document.getElementById('kontener').innerHTML += "<div id='dodanie_dania'></div>"
 }

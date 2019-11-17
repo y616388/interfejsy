@@ -28,24 +28,35 @@ body {
 	height: 13vh;
 }
 
-#baner2 {
+#b1, #b2 {
+  height: 100%;
+}
+
+#b2 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+#baner2, #baner3 {
 	position: fixed;
 	top: 1vw;
 	right: 1vw;
 	margin: auto;
-	background: green;
+	background: #363636;
 	width: 5vw;
 	height: 5vw;
+  cursor: pointer;
 }
 
 #baner3 {
-	position: fixed;
-	top: 1vw;
 	right: 7vw;
-	margin: auto;
-	background: red;
-	width: 5vw;
-	height: 5vw;
+}
+
+#baner2 > img, #baner3 > img {
+  margin-top: 25%;
+  width: 100%;
 }
 
 #menu {
@@ -97,6 +108,10 @@ body {
 	height: 60vh;
 	width: 15vw;
 	border: 1px solid black;
+}
+
+#promocje > img {
+  width: 100%;
 }
 
 #dania {
