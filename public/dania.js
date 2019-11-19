@@ -15,7 +15,7 @@ var pizze = [
 ];
 
 var miesne = [
-	['Filet z kurczaka', 'img/.png', 25, ''],
+	['Filet z kurczaka', pizza_img, 25, ''],
 	['Kotlet drobiowy', 'img/.png', 25, 'w złocistej panierce'],
 	['Zestaw Fitness', 'img/.png', 25, 'filet z grilla na warzywach z ryżem'],
 	['Fileciki drobiowe duszone', 'img/.png', 25, 'w sosie śmietanowo-kurkowym'],

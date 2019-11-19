@@ -6,7 +6,7 @@ function start() {
 	document.getElementById('kontener').innerHTML += "<div id='baner3'><img src='img/ang.png'></div>";
 	document.getElementById('kontener').innerHTML += "<div id='menu'><div class='przycisk' id='o0' onclick='opcja(0)'>Pizza</div><div class='przycisk' id='o1' onclick='opcja(1)'>Dania Mięsne</div><div class='przycisk' id='o2' onclick='opcja(2)'>Makarony</div><div class='przycisk' id='o3' onclick='opcja(3)'>Dodatki</div><div class='przycisk' id='o4' onclick='opcja(4)'>Alkohole</div><div class='przycisk' id='o5' onclick='opcja(5)'>Napoje</div></div>";
 	document.getElementById('kontener').innerHTML += "<div id='main'></div>";
-	document.getElementById('kontener').innerHTML += "<div id='koszyk_open'>Przejdź do koszyka➜</div>";
+	document.getElementById('kontener').innerHTML += "<div id='koszyk_open'>Przejdź do koszyka<div id='koszyk_ilosc'>0</div></div>";
 	document.getElementById('kontener').innerHTML += "<div id='promocje'><img src='img/promo.png'></div>";
   document.getElementById('kontener').innerHTML += "<div id='dodanie_dania_tlo' onclick='zamkniecie_dodania()'></div>"
   document.getElementById('kontener').innerHTML += "<div id='dodanie_dania'></div>"
@@ -14,8 +14,10 @@ function start() {
 
 var id = 0;
 var otwarte = -1;
+var typ = 0;
 
 function opcja(id) {
+	typ = id;
 	for(var i = 0; i <= 5; i++) {
 		document.getElementById('o' + i).style.background = "#C68A66";
 	}
@@ -48,9 +50,6 @@ function opcja(id) {
 
 opcja(0);
 
-//<div id='koszyk_niego'>Do zapłaty: 12,50zł</div>
-//<div id='koszyk_go'>Zapłać</div>
-
 function otworz(id) {
   if(otwarte != -1) {
     document.getElementById("danie_nazwa" + otwarte).style.animation = "nazwa_dol 0.1s linear forwards";
@@ -75,6 +74,8 @@ function otworz(id) {
   }
 }
 
+var rozmiary = [0, 0, 0];
+
 function dodaj(typ, id) {
   document.getElementById("dodanie_dania").style.display = "block";
   document.getElementById("dodanie_dania_tlo").style.display = "block";
@@ -85,27 +86,85 @@ function dodaj(typ, id) {
 
   if(typ == 0) {
     //document.getElementById("dodanie_dania").innerHTML += dania[typ][id][0] + "<br>" + dania[typ][id][2] + "zł";
+		rozmiary = [0, 0, 0];
     document.getElementById("dodanie_dania").innerHTML += "<div id='dodanie_nazwa'>"+dania[typ][id][0]+"</div>";
     document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kolo'>30cm</div>";
     document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kolo'>"+dania[typ][id][2]+"zł</div>";
-    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kwadrat'>+</div>";
-    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_puste'>0</div>";
-    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kwadrat'>-</div>";
+    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kwadrat' onclick='ilosc(0, 0)'>+</div>";
+    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_puste' id='rozmiar0'>0</div>";
+    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kwadrat' onclick='ilosc(0, 1)'>-</div>";
 
     document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kolo'>40cm</div>";
     document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kolo'>"+(dania[typ][id][2]) * 1.5+"zł</div>";
-    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kwadrat'>+</div>";
-    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_puste'>0</div>";
-    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kwadrat'>-</div>";
+    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kwadrat' onclick='ilosc(1, 0)'>+</div>";
+    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_puste' id='rozmiar1'>0</div>";
+    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kwadrat' onclick='ilosc(1, 1)'>-</div>";
 
     document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kolo'>50cm</div>";
     document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kolo'>"+(dania[typ][id][2]) * 2+"zł</div>";
-    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kwadrat'>+</div>";
-    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_puste'>0</div>";
-    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kwadrat'>-</div>";
+    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kwadrat' onclick='ilosc(2, 0)'>+</div>";
+    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_puste' id='rozmiar2'>0</div>";
+    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kwadrat' onclick='ilosc(2, 1)'>-</div>";
 
-    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_przycisk'>Dodaj do koszyka</div>";
-  }
+    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_przycisk' onclick='dodaj_rozmiar("+typ+","+id+")'>Dodaj do koszyka</div>";
+  }else {
+		rozmiary = [0, 0, 0];
+		document.getElementById("dodanie_dania").innerHTML += "<div id='dodanie_nazwa'>"+dania[typ][id][0]+"</div>";
+		document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_zdjecie'><img src='"+dania[typ][id][1]+"'></div>";
+
+		document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_cena'>"+dania[typ][id][2]+"zł</div>";
+
+		document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_spacja'></div>";
+		document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kwadrat' onclick='ilosc(0, 0)'>+</div>";
+    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_puste' id='rozmiar0'>0</div>";
+    document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kwadrat' onclick='ilosc(0, 1)'>-</div>";
+
+		document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_przycisk' onclick='koszyk_dodaj("+typ+","+id+",0,"+rozmiary[0]+")'>Dodaj do koszyka</div>";
+	}
+}
+
+//var koszyk = [typ, id, rozmiar, ilosc];
+var koszyk = [];
+
+function dodaj_rozmiar(typ, id) {
+	for(var i = 0; i < 3; i++) {
+		if(rozmiary[i] > 0) {
+			koszyk_dodaj(typ, id, i, rozmiary[i]);
+		}
+	}
+}
+
+function koszyk_dodaj(typ, id, rozmiar, ilosc) {
+	if(typ != 0) {
+		ilosc = rozmiary[rozmiar];
+	}
+	var zamowienie = [typ, id, rozmiar, ilosc];
+	if(ilosc > 0) {
+		koszyk.push(zamowienie);
+	}
+	ilosc = 0;
+	for(var i = 0; i < koszyk.length; i++) {
+		ilosc += koszyk[i][3];
+	}
+
+	document.getElementById("koszyk_ilosc").innerHTML=ilosc;
+
+	zamkniecie_dodania();
+}
+
+function ilosc(rozmiar, operacja) {
+	if(!operacja) {
+		rozmiary[rozmiar]++;
+	}else if(rozmiary[rozmiar] > 0) {
+		rozmiary[rozmiar]--;
+	}
+	if(typ == 0) {
+		for(var i = 0; i < 3; i++) {
+			document.getElementById("rozmiar" + i).innerHTML = rozmiary[i];
+		}
+	}else {
+		document.getElementById("rozmiar0").innerHTML = rozmiary[0];
+	}
 }
 
 function zamkniecie_dodania() {
