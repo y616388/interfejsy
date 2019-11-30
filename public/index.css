@@ -39,26 +39,6 @@ body {
   margin: auto;
 }
 
-#baner2, #baner3 {
-	position: fixed;
-	top: 1vw;
-	right: 1vw;
-	margin: auto;
-	background: #363636;
-	width: 5vw;
-	height: 5vw;
-  cursor: pointer;
-}
-
-#baner3 {
-	right: 7vw;
-}
-
-#baner2 > img, #baner3 > img {
-  margin-top: 25%;
-  width: 100%;
-}
-
 #menu {
 	width: 20vw;
 	height: 87vh;
@@ -71,7 +51,7 @@ body {
 #koszyk_open {
 	width: 15vw;
 	height: 10vh;
-	background: #a1d379;
+	background: #79c03f;
 	position: fixed;
 	bottom: 1vw;
 	right: 1vw;
@@ -118,13 +98,59 @@ body {
 	position: fixed;
 	top: calc(13vh + 1vw);
 	right: 1vw;
-	height: 60vh;
+	height: calc(20vw + 14vh);
 	width: 15vw;
-	border: 1px solid black;
+	//border: 1px solid black;
+  background: url("img/promo_bg.png");
 }
 
-#promocje > img {
+@keyframes promo_bg {
+    0% {background-position: : 0px 0px;}
+    100% {background-position: 80px 85px;}
+}
+
+#promocje_tytul {
+  #position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 10vh;
+  //background: #363636B2;
+  background: #da1910B2;
+  color: white;
+  line-height: 10vh;
+  text-align: center;
+  font-size: 4vh;
+}
+
+#promocje_img {
+  position: absolute;
+  height: 14vw;
+  width: 14vw;
+  background: none;
+  top: 12vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+#promocje_img > img {
+	height: 100%;
+	width: 100%;
+  pointer-events: none;
+}
+
+#promocje_nazwa {
+  position: absolute;
+  height: 6vw;
+  width: 15vw;
+  background: #da1910B2;
+  top: calc(14vw + 14vh);
+  left: 0;
+  line-height: 3vw;
+  text-align: center;
+  font-size: 4vh;
+  text-shadow: 1px 1px 4px #da1910;
 }
 
 #dania {
@@ -185,7 +211,7 @@ body {
 	text-align: center;
 	line-height: 5vw;
 	font-size: 2vw;
-  background: #a1d379;
+  background: #79c03f;
   display: none;
   cursor: pointer;
 }
@@ -296,7 +322,7 @@ body {
   bottom: 1vw;
   width: 29vw;
   height: 5vw;
-  background: #a1d379;
+  background: #79c03f;
   cursor: pointer;
   line-height: 5vw;
   text-align: center;
@@ -330,4 +356,14 @@ body {
   float: left;
   height: 5vw;
   width: 6vw;
+}
+
+#koszyk {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #FBF1E7;
+  display: none;
 }
