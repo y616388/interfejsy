@@ -1,7 +1,7 @@
 start();
 function start() {
 	document.getElementById('kontener').innerHTML += "<div id='dania'></div>";
-	document.getElementById('kontener').innerHTML += "<div id='baner'><img id='b1' src='img/logo.png'><img id='b2' src='img/baner.png'></div>";
+	document.getElementById('kontener').innerHTML += "<div id='baner'><div id='b1'>Pizz</div><img id='b2' src='img/p1.svg'><div id='b3'>mat</div></div>";
 	document.getElementById('kontener').innerHTML += "<div id='menu'><div class='przycisk' id='o0' onclick='opcja(0)'>Pizza</div><div class='przycisk' id='o1' onclick='opcja(1)'>Dania Mięsne</div><div class='przycisk' id='o2' onclick='opcja(2)'>Makarony</div><div class='przycisk' id='o3' onclick='opcja(3)'>Dodatki</div><div class='przycisk' id='o4' onclick='opcja(4)'>Alkohole</div><div class='przycisk' id='o5' onclick='opcja(5)'>Napoje</div></div>";
 	document.getElementById('kontener').innerHTML += "<div id='main'></div>";
 	document.getElementById('kontener').innerHTML += "<div id='koszyk_open' onclick='koszyk_open()'>Przejdź do koszyka<div id='koszyk_ilosc'>0</div></div>";
@@ -83,9 +83,9 @@ function dodaj(typ, id) {
 
   document.getElementById("dodanie_dania").innerHTML = "";
 
+	rozmiary = [0, 0, 0];
+
   if(typ == 0) {
-    //document.getElementById("dodanie_dania").innerHTML += dania[typ][id][0] + "<br>" + dania[typ][id][2] + "zł";
-		rozmiary = [0, 0, 0];
     document.getElementById("dodanie_dania").innerHTML += "<div id='dodanie_nazwa'>"+dania[typ][id][0]+"</div>";
     document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kolo'>30cm</div>";
     document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_kolo'>"+dania[typ][id][2]+"zł</div>";
@@ -107,7 +107,6 @@ function dodaj(typ, id) {
 
     document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_przycisk' onclick='dodaj_rozmiar("+typ+","+id+")'>Dodaj do koszyka</div>";
   }else {
-		rozmiary = [0, 0, 0];
 		document.getElementById("dodanie_dania").innerHTML += "<div id='dodanie_nazwa'>"+dania[typ][id][0]+"</div>";
 		document.getElementById("dodanie_dania").innerHTML += "<div class='dodanie_zdjecie'><img src='"+dania[typ][id][1]+"'></div>";
 
@@ -123,6 +122,7 @@ function dodaj(typ, id) {
 }
 
 //var koszyk = [typ, id, rozmiar, ilosc];
+//var koszyk = [[0, 0, 0, 1], [0, 0, 1, 2], [0, 5, 1, 1], [0, 5, 2, 1], [4, 0, 0, 2]];
 var koszyk = [];
 
 var promocja_id = Math.floor((Math.random() * 11) + 0);
@@ -145,7 +145,16 @@ function koszyk_dodaj(typ, id, rozmiar, ilosc) {
 	}
 	var zamowienie = [typ, id, rozmiar, ilosc];
 	if(ilosc > 0) {
-		koszyk.push(zamowienie);
+		var czy_rozmiar = 1;
+		for(var i=0; i < koszyk.length; i++) {
+			if(koszyk[i][0] == typ && koszyk[i][1] == id && koszyk[i][2] == rozmiar) {
+				czy_rozmiar = 0;
+				koszyk[i][3] += ilosc;
+			}
+		}
+		if(czy_rozmiar) {
+			koszyk.push(zamowienie);
+		}
 	}
 	ilosc = 0;
 	for(var i = 0; i < koszyk.length; i++) {
@@ -184,4 +193,129 @@ function zamkniecie_dodania() {
 function koszyk_open() {
 	document.getElementById("koszyk").style.display = "block";
 	document.getElementById("koszyk").style.animation = "odznikanie 0.1s linear forwards";
+	window.scrollTo(0, 0);
+	setTimeout(function() {
+		document.getElementById("dania").innerHTML = "";
+		}, 100);
+	koszyk_wyswietl();
+}
+
+function koszyk_wyswietl() {
+	document.getElementById("koszyk").innerHTML = "<div id='koszyk_powrot' onclick='koszyk_zamknij()'>Powrót</div><div id='koszyk_dalej' onclick='koszyk_plac()'>Dalej</div><div id='koszyk_cena'></div>";
+	var cena_all = 0;
+
+	for(var i=0; i < koszyk.length; i++) {
+		var linia = "<div class='koszyk_linia'><div class='koszyk_linia_img' style='background-image:url("+dania[koszyk[i][0]][koszyk[i][1]][1]+")'>";
+		if(koszyk[i][0] == 0) {
+			linia += (koszyk[i][2]+2) * 10 + "cm";
+		}
+		linia += "</div><div class='koszyk_linia_nazwa'>"+dania[koszyk[i][0]][koszyk[i][1]][0]+"</div>"
+		+ "<div class='koszyk_linia_plus' onclick='koszyk_edycja("+i+", 0)'>➕</div>"
+		+ "<div class='koszyk_linia_ilosc'>"+koszyk[i][3]+"</div>"
+		+ "<div class='koszyk_linia_minus' onclick='koszyk_edycja("+i+", 1)'>➖</div>"
+		+ "<div class='koszyk_linia_cena'>";
+		var cena = dania[koszyk[i][0]][koszyk[i][1]][2] * koszyk[i][3];
+		if(koszyk[i][2] == 1) {
+			cena *= 1.5;
+		}
+		if(koszyk[i][2] == 2) {
+			cena *= 2;
+		}
+		cena_all += cena;
+		linia += cena + "<font style='font-size:2vw;'>zł</font></div><div class='koszyk_linia_usun' onclick='koszyk_edycja("+i+", 2)'>❌</div></div>";
+
+		document.getElementById("koszyk").innerHTML += linia;
+		document.getElementById("koszyk_cena").innerHTML = cena_all + "<font style='font-size:2vw;'>zł</font>";
+	}
+}
+
+function koszyk_edycja(id, operacja) {
+	if(operacja == 0) {
+		koszyk[id][3]++;
+	}
+	if(operacja == 1) {
+		if(koszyk[id][3] > 1) {
+			koszyk[id][3]--;
+		}else {
+			koszyk_edycja(id, 2);
+		}
+	}
+	if(operacja == 2) {
+		koszyk.splice(id, 1);
+	}
+	koszyk_wyswietl();
+}
+
+function koszyk_zamknij() {
+	document.getElementById("koszyk").style.animation = "znikanie 0.1s linear forwards";
+	window.scrollTo(0, 0);
+	setTimeout(function() {
+		document.getElementById("koszyk").style.display = "none";
+		opcja(0);
+		var ilosc = 0;
+		for(var i = 0; i < koszyk.length; i++) {
+			ilosc += koszyk[i][3];
+		}
+		document.getElementById("koszyk_ilosc").innerHTML=ilosc;
+	}, 100);
+}
+
+var koszyk_opcja = 1;
+
+function koszyk_plac() {
+	document.getElementById("koszyk").innerHTML = "<div id='koszyk_powrot' onclick='koszyk_wyswietl()'>Powrót</div><div id='koszyk_dalej' onclick='koszyk_koniec()'>Dalej</div><div id='koszyk_cena'></div>";
+	document.getElementById("koszyk").innerHTML += "<div id='koszyk_napis'>Wybierz formę płatności</div>";
+	document.getElementById("koszyk").innerHTML += "<div id='koszyk_4'></div><div id='koszyk_5'></div>";
+	document.getElementById("koszyk").innerHTML += "<div id='koszyk_1' onclick='koszyk_wybierz(1)'>💵<div id='koszyk_3'>Płatność gotówką</div></div>";
+	document.getElementById("koszyk").innerHTML += "<div id='koszyk_2' onclick='koszyk_wybierz(2)'>💳<div id='koszyk_3'>Płatność kartą</div></div>";
+	document.getElementById("koszyk").innerHTML += "<div id='koszyk_cena_plac'></div>";
+	document.getElementById("koszyk").innerHTML += "<div id='koszyk_cena'></div>";
+	var cena_all = 0;
+	for(var i=0; i < koszyk.length; i++) {
+		var cena = dania[koszyk[i][0]][koszyk[i][1]][2] * koszyk[i][3];
+		if(koszyk[i][2] == 1) {
+			cena *= 1.5;
+		}
+		if(koszyk[i][2] == 2) {
+			cena *= 2;
+		}
+		cena_all += cena;
+	}
+	document.getElementById("koszyk_cena").innerHTML = cena_all + "<font style='font-size:2vw;'>zł</font>";
+
+	koszyk_wybierz(1);
+	koszyk_opcja = 1;
+}
+
+function koszyk_wybierz(nr) {
+	koszyk_opcja = nr;
+	document.getElementById("koszyk_4").style.border = "none";
+	document.getElementById("koszyk_5").style.border = "none";
+	document.getElementById("koszyk_"+(nr+3)).style.border = "1px solid #363636";
+}
+
+function koszyk_koniec() {
+
+	if(koszyk_opcja == 1) {
+		document.getElementById("koszyk").innerHTML = "<div id='koszyk_napis'>Udaj się do kasy z numerem</div>";
+	}else {
+		document.getElementById("koszyk").innerHTML = "<div id='koszyk_napis'>Przyłóż kartę do czytnika</div>";
+	}
+
+	document.getElementById("koszyk").innerHTML += "<div id='koszyk_powrot' onclick='koszyk_zamknij()'>Zamknij</div></div>";
+	document.getElementById("koszyk").innerHTML += "<div id='koszyk_nr'>#"+Math.floor((Math.random()*10))+Math.floor((Math.random()*10))+Math.floor((Math.random()*10))+"<div id='koszyk_nr_2'>Numer Twojego zamówienia</div></div>";
+
+	var cena_all = 0;
+	for(var i=0; i < koszyk.length; i++) {
+		var cena = dania[koszyk[i][0]][koszyk[i][1]][2] * koszyk[i][3];
+		if(koszyk[i][2] == 1) {
+			cena *= 1.5;
+		}
+		if(koszyk[i][2] == 2) {
+			cena *= 2;
+		}
+		cena_all += cena;
+	}
+	document.getElementById("koszyk").innerHTML += "<div id='koszyk_koniec_cena'>Do zapłaty "+cena_all+"zł</div>";
+	koszyk = [];
 }
