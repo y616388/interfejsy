@@ -6,7 +6,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 #kontener {
@@ -18,14 +18,14 @@ body {
 }
 
 #baner {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	margin: auto;
-	background: #F9E8D8;
-	width: 100vw;
-	height: 13vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: #F9E8D8;
+  width: 100vw;
+  height: 13vh;
   text-align: center;
   line-height: 13vh;
   color: #363636;
@@ -53,21 +53,21 @@ body {
 }
 
 #menu {
-	width: 20vw;
-	height: 87vh;
-	background: #C68A66;
-	position: fixed;
-	top: 13vh;
-	left: 0;
+  width: 20vw;
+  height: 87vh;
+  background: #C68A66;
+  position: fixed;
+  top: 13vh;
+  left: 0;
 }
 
 #koszyk_open {
-	width: 15vw;
-	height: 10vh;
-	background: #79c03f;
-	position: fixed;
-	bottom: 1vw;
-	right: 1vw;
+  width: 15vw;
+  height: 10vh;
+  background: #79c03f;
+  position: fixed;
+  bottom: 1vw;
+  right: 1vw;
   text-align: center;
   line-height: 10vh;
   font-size: 1.5vw;
@@ -87,39 +87,39 @@ body {
 }
 
 .przycisk {
-	cursor: pointer;
-	width: 18vw;
-	height: 14.5vh;
-	background: none;
-	line-height: 14vh;
-	text-align: left;
-	padding-left: 2vw;
-	font-size: 2vw;
-	color: white;
-	border-bottom: 1px #F9E8D8 solid;
+  cursor: pointer;
+  width: 18vw;
+  height: 14.5vh;
+  background: none;
+  line-height: 14vh;
+  text-align: left;
+  padding-left: 2vw;
+  font-size: 2vw;
+  color: white;
+  border-bottom: 1px #F9E8D8 solid;
 }
 
 .przycisk:hover {
-	background: #cd9879;
+  background: #cd9879;
 }
 
 .przycisk:active {
-	background: #a3633d;
+  background: #a3633d;
 }
 
 #promocje {
-	position: fixed;
-	top: calc(13vh + 1vw);
-	right: 1vw;
-	height: calc(20vw + 14vh);
-	width: 15vw;
-	//border: 1px solid black;
+  position: fixed;
+  top: calc(13vh + 1vw);
+  right: 1vw;
+  height: calc(20vw + 14vh);
+  width: 15vw;
+  //border: 1px solid black;
   background: url("img/promo_bg.png");
 }
 
 @keyframes promo_bg {
-    0% {background-position: : 0px 0px;}
-    100% {background-position: 80px 85px;}
+  0% {background-position: : 0px 0px;}
+  100% {background-position: 80px 85px;}
 }
 
 #promocje_tytul {
@@ -148,8 +148,8 @@ body {
 }
 
 #promocje_img > img {
-	height: 100%;
-	width: 100%;
+  height: 100%;
+  width: 100%;
   pointer-events: none;
 }
 
@@ -167,36 +167,36 @@ body {
 }
 
 #dania {
-	position: absolute;
-	top: 13vh;
-	left: 20vw;
-	width: 65vw;
+  position: absolute;
+  top: 13vh;
+  left: 20vw;
+  width: 65vw;
 }
 
 .danie {
-	position: relative;
-	width: 20vw;
-	height: 20vw;
-	float: left;
-	margin-left: 1vw;
-	margin-top: 1vw;
+  position: relative;
+  width: 20vw;
+  height: 20vw;
+  float: left;
+  margin-left: 1vw;
+  margin-top: 1vw;
 }
 
 .danie > img {
-	height: 100%;
-	width: 100%;
+  height: 100%;
+  width: 100%;
   pointer-events: none;
 }
 
 .danie_nazwa_tlo, .danie_nazwa  {
-	position: absolute;
-	width: 100%;
-	height: 5vw;
-	bottom:0;
-	left:0;
-	text-align: center;
-	line-height: 5vw;
-	font-size: 1.5vw;
+  position: absolute;
+  width: 100%;
+  height: 5vw;
+  bottom:0;
+  left:0;
+  text-align: center;
+  line-height: 5vw;
+  font-size: 1.5vw;
 }
 
 .danie_nazwa_tlo {
@@ -206,37 +206,37 @@ body {
 
 .danie_opis {
   position: absolute;
-	width: 15vw;
-	height: 5vw;
-	bottom: 7.5vw;
-	left: 2.5vw;
-	text-align: center;
-	font-size: 1.3vw;
+  width: 15vw;
+  height: 5vw;
+  bottom: 7.5vw;
+  left: 2.5vw;
+  text-align: center;
+  font-size: 1.3vw;
   display: none;
 }
 
 .danie_dodaj {
   position: absolute;
-	width: 18vw;
-	height: 5vw;
-	bottom: 1vw;
-	left: 1vw;
-	text-align: center;
-	line-height: 5vw;
-	font-size: 2vw;
+  width: 18vw;
+  height: 5vw;
+  bottom: 1vw;
+  left: 1vw;
+  text-align: center;
+  line-height: 5vw;
+  font-size: 2vw;
   background: #79c03f;
   display: none;
   cursor: pointer;
 }
 
 @keyframes nazwa_gora {
-    0% {bottom: 0vw;}
-    100% {bottom: 15vw;}
+  0% {bottom: 0vw;}
+  100% {bottom: 15vw;}
 }
 
 @keyframes nazwa_tlo_gora {
-    0% {height: 5vw;}
-    100% {height: 20vw;}
+  0% {height: 5vw;}
+  100% {height: 20vw;}
 }
 
 @keyframes nazwa_dol {
@@ -245,28 +245,28 @@ body {
 }
 
 @keyframes nazwa_tlo_dol {
-    0% {height: 20vw;}
-    100% {height: 5vw;}
+  0% {height: 20vw;}
+  100% {height: 5vw;}
 }
 
 @keyframes znikanie {
-    0% {opacity: 1;}
-    100% {opacity: 0;}
+  0% {opacity: 1;}
+  100% {opacity: 0;}
 }
 
 @keyframes odznikanie {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+  0% {opacity: 0;}
+  100% {opacity: 1;}
 }
 
 @keyframes znikanie2 {
-    0% {opacity: 0.7;}
-    100% {opacity: 0;}
+  0% {opacity: 0.7;}
+  100% {opacity: 0;}
 }
 
 @keyframes odznikanie2 {
-    0% {opacity: 0;}
-    100% {opacity: 0.7;}
+  0% {opacity: 0;}
+  100% {opacity: 0.7;}
 }
 
 #dodanie_dania_tlo {
